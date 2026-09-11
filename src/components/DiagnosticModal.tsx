@@ -45,8 +45,8 @@ export const DiagnosticModal: React.FC<DiagnosticModalProps> = ({
     },
     {
       id: 'stream',
-      name: 'Bybit Spot WebSocket Stream',
-      description: 'Check active streaming connection to wss://stream.bybit.com/v5/public/spot',
+      name: 'Bybit Spot Real-Time Market Stream',
+      description: 'Check active streaming connection to Bybit v5 public spot feeds',
       status: 'pending',
     },
     {
@@ -100,10 +100,10 @@ export const DiagnosticModal: React.FC<DiagnosticModalProps> = ({
     setChecks([...updatedChecks]);
     await new Promise((r) => setTimeout(r, 200));
 
-    // Step 3: WebSocket Stream
+    // Step 3: Stream
     if (status === 'connected') {
       updatedChecks[2].status = 'passed';
-      updatedChecks[2].details = 'PASSED: WebSocket is OPEN and receiving Bybit v5 public topic packets.';
+      updatedChecks[2].details = 'PASSED: Real-time market stream is ACTIVE and receiving Bybit v5 spot quote packets.';
     } else {
       updatedChecks[2].status = 'failed';
       updatedChecks[2].details = `FAILED: Current status is ${status}.`;
